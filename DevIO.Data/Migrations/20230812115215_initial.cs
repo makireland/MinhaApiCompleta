@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DevIO.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,8 +18,8 @@ namespace DevIO.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
                     Documento = table.Column<string>(type: "varchar(1000)", nullable: false),
-                    Ativo = table.Column<bool>(type: "bit", nullable: false),
-                    TipoFornecedor = table.Column<int>(type: "int", nullable: false)
+                    TipoFornecedor = table.Column<int>(type: "int", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,14 +31,14 @@ namespace DevIO.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FornecedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Logradouro = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Numero = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Complemento = table.Column<string>(type: "varchar(50)", nullable: true),
                     Bairro = table.Column<string>(type: "varchar(100)", nullable: false),
                     Cep = table.Column<string>(type: "varchar(8)", nullable: false),
                     Cidade = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Complemento = table.Column<string>(type: "varchar(50)", nullable: true),
                     Estado = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Logradouro = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Numero = table.Column<string>(type: "varchar(50)", nullable: false)
+                    FornecedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
