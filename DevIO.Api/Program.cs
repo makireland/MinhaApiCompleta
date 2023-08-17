@@ -1,9 +1,6 @@
 using DevIO.Api.Configuration;
-using DevIO.Business.Interfaces;
-using DevIO.Business.Notificacoes;
-using DevIO.Business.Services;
 using DevIO.Data.Context;
-using DevIO.Data.Repository;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +16,8 @@ builder.Services.ResolveDependencies();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddDbContext<MeuDbContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("MinhaApiDb")));
+
+builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 
 var app = builder.Build();
 
